@@ -1,0 +1,15 @@
+{
+  "name": "heartwood",
+  "version": "0.1.0",
+  "description": "Local context hygiene for long Codex coding sessions.",
+  "skills": "./skills/",
+  "hooks": "./hooks/hooks.json",
+  "interface": {
+    "displayName": "Heartwood",
+    "shortDescription": "Keep long Codex sessions lean and recoverable",
+    "longDescription": "Trims oversized shell output and saves local continuity checkpoints.",
+    "developerName": "Heartwood contributors",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"]
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "description": "Heartwood local context hygiene hooks.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "^Bash$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${PLUGIN_ROOT}/hooks/heartwood.mjs\" trim",
+            "commandWindows": "node \"${PLUGIN_ROOT}\\hooks\\heartwood.mjs\" trim",
+            "timeout": 15,
+            "statusMessage": "Trimming oversized command output"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${PLUGIN_ROOT}/hooks/heartwood.mjs\" observe",
+            "commandWindows": "node \"${PLUGIN_ROOT}\\hooks\\heartwood.mjs\" observe",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${PLUGIN_ROOT}/hooks/heartwood.mjs\" checkpoint",
+            "commandWindows": "node \"${PLUGIN_ROOT}\\hooks\\heartwood.mjs\" checkpoint",
+            "timeout": 15,
+            "statusMessage": "Saving a local continuity checkpoint"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "^compact$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${PLUGIN_ROOT}/hooks/heartwood.mjs\" restore",
+            "commandWindows": "node \"${PLUGIN_ROOT}\\hooks\\heartwood.mjs\" restore",
+            "timeout": 10,
+            "additionalContextLimit": 1500,
+            "statusMessage": "Restoring workspace continuity"
+          }
+        ]
+      }
+    ]
+  }
+}

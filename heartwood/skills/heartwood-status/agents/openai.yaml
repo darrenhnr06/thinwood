@@ -1,0 +1,4 @@
+interface:
+  display_name: "Heartwood Status"
+  short_description: "Inspect and maintain local context checkpoints"
+  default_prompt: "Show Heartwood status for this Codex session."

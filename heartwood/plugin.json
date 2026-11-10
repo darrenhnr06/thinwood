@@ -1,0 +1,24 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "heartwood",
+  "version": "0.1.0",
+  "description": "Local context hygiene for long Codex coding sessions.",
+  "extensions": {
+    "com.openai": {
+      "hooks": "./hooks/hooks.json",
+      "requires_local_executor": true,
+      "interface": {
+        "displayName": "Heartwood",
+        "shortDescription": "Keep long Codex sessions lean and recoverable",
+        "longDescription": "Trims oversized shell output before it enters chat history and preserves a small local workspace checkpoint across Codex compaction.",
+        "developerName": "Heartwood contributors",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "defaultPrompt": [
+          "Show Heartwood status for this session.",
+          "Preview which old Heartwood files can be pruned."
+        ]
+      }
+    }
+  }
+}
